@@ -1,0 +1,31 @@
+# Orion RootFS .gitignore
+
+# Downloaded sources (large files)
+sources/imagefs/imagefs.txz
+sources/proton/proton-9.0-arm64ec.txz
+
+# Embedded assets (copied from app)
+sources/graphics_driver/
+sources/dxwrapper/
+sources/wincomponents/
+sources/box64/
+sources/fexcore/
+sources/others/
+
+# Build outputs
+output/
+temp/
+
+# System files
+.DS_Store
+Thumbs.db
+
+# Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Logs
+*.log
