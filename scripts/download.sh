@@ -113,76 +113,8 @@ download_proton() {
 # =============================================================================
 
 copy_embedded_assets() {
-    log "Copying embedded assets from app..."
-    
-    local APP_ASSETS="$ROOT_DIR/../GoWLauncher-Android/app/src/main/assets"
-    
-    if [ ! -d "$APP_ASSETS" ]; then
-        warn "App assets directory not found: $APP_ASSETS"
-        warn "Skipping embedded assets copy"
-        return 0
-    fi
-    
-    # Copy graphics drivers
-    if [ -d "$APP_ASSETS/graphics_driver" ]; then
-        log "  Copying graphics drivers..."
-        cp -r "$APP_ASSETS/graphics_driver" "$SOURCES_DIR/"
-    fi
-    
-    # Copy dxwrapper
-    if [ -d "$APP_ASSETS/dxwrapper" ]; then
-        log "  Copying dxwrapper..."
-        cp -r "$APP_ASSETS/dxwrapper" "$SOURCES_DIR/"
-    fi
-    
-    # Copy wincomponents
-    if [ -d "$APP_ASSETS/wincomponents" ]; then
-        log "  Copying wincomponents..."
-        cp -r "$APP_ASSETS/wincomponents" "$SOURCES_DIR/"
-    fi
-    
-    # Copy box64
-    if [ -d "$APP_ASSETS/box64" ]; then
-        log "  Copying box64..."
-        cp -r "$APP_ASSETS/box64" "$SOURCES_DIR/"
-    fi
-    
-    # Copy fexcore
-    if [ -d "$APP_ASSETS/fexcore" ]; then
-        log "  Copying fexcore..."
-        cp -r "$APP_ASSETS/fexcore" "$SOURCES_DIR/"
-    fi
-    
-    # Copy other files
-    log "  Copying other assets..."
-    mkdir -p "$SOURCES_DIR/others"
-    
-    for file in pulseaudio.tzst layers.tzst input_dlls.tzst container_pattern_common.tzst \
-                proton-9.0-arm64ec_container_pattern.tzst proton-9.0-x86_64_container_pattern.tzst; do
-        if [ -f "$APP_ASSETS/$file" ]; then
-            cp "$APP_ASSETS/$file" "$SOURCES_DIR/others/"
-        fi
-    done
-    
-    # Copy ddrawrapper
-    if [ -d "$APP_ASSETS/ddrawrapper" ]; then
-        mkdir -p "$SOURCES_DIR/others/ddrawrapper"
-        cp -r "$APP_ASSETS/ddrawrapper"/* "$SOURCES_DIR/others/ddrawrapper/"
-    fi
-    
-    # Copy wowbox64
-    if [ -d "$APP_ASSETS/wowbox64" ]; then
-        mkdir -p "$SOURCES_DIR/others/wowbox64"
-        cp -r "$APP_ASSETS/wowbox64"/* "$SOURCES_DIR/others/wowbox64/"
-    fi
-    
-    # Copy soundfonts
-    if [ -d "$APP_ASSETS/soundfonts" ]; then
-        mkdir -p "$SOURCES_DIR/others/soundfonts"
-        cp -r "$APP_ASSETS/soundfonts"/* "$SOURCES_DIR/others/soundfonts/"
-    fi
-    
-    log "Embedded assets copied successfully"
+    log "Embedded assets already in repository"
+    log "Skipping copy step"
 }
 
 # =============================================================================
@@ -197,9 +129,6 @@ main() {
     # Download external assets
     download_imagefs
     download_proton
-    
-    # Copy embedded assets (if available)
-    copy_embedded_assets
     
     # Cleanup temp
     rm -rf "$TEMP_DIR"

@@ -35,7 +35,8 @@ verify_checksum() {
     log "Verifying package checksum..."
     
     local orfs_file="$1"
-    local sha_file="${orfs_file}.sha256"
+    local orfs_basename=$(basename "$orfs_file" .orfs)
+    local sha_file="$(dirname "$orfs_file")/${orfs_basename}.sha256"
     
     if [ ! -f "$orfs_file" ]; then
         error "Package file not found: $orfs_file"
