@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "name": "v819",
+  "description": "Extracted from the Quest 2.",
+  "author": "Pipetto-crypto",
+  "packageVersion": "1",
+  "vendor": "Qualcomm",
+  "driverVersion": "Vulkan 1.4.303",
+  "minApi": 27,
+  "libraryName": "vulkan.ad8191.so"
+}
+
